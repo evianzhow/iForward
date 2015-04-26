@@ -1,0 +1,10 @@
+Package: com.iforward
+Name: iForward
+Version: 1.7
+Architecture: iphoneos-arm
+Description: Forward your SMS's, Calls and Voicemails to your email instantly after receiving them on your phone. 
+Homepage:
+Depiction: 
+Maintainer: Ryan Conigliaro <ryan_mikele78@yahoo.com> 
+Author: Ryan Conigliaro <ryan_mikele78@yahoo.com> 
+Section: Messaging

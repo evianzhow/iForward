@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>entry</key>
+   <dict>
+      <key>cell</key>
+         <string>PSLinkCell</string>
+         <key>icon</key>
+         <string>iForwardIcon.png</string>
+         <key>label</key>
+         <string>iForward</string>
+      </dict>
+      <key>items</key>
+      <array>
+          <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableSMSIn</string>
+            <key>label</key>
+            <string>Enable Incoming SMS</string>
+          </dict>
+          <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableSMSOut</string>
+            <key>label</key>
+            <string>Enable Outgoing SMS</string>
+          </dict>
+          <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableCallIn</string>
+            <key>label</key>
+            <string>Enable Incoming Call</string>
+         </dict>
+         <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableCallOut</string>
+            <key>label</key>
+            <string>Enable Outgoing Call</string>
+         </dict>
+          <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableVoice</string>
+            <key>label</key>
+            <string>Enable Voicemail</string>
+         </dict>
+         <dict>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>default</key>
+            <real>0</real>
+            <key>defaults</key>
+            <string>com.iforward</string>
+            <key>key</key>
+            <string>enableVoiceAttach</string>
+            <key>label</key>
+            <string>Include Voicemail File</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>toEmail</string>
+          <key>label</key>
+          <string>To Email</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>smsSubjectOut</string>
+          <key>label</key>
+          <string>Outgoing SMS Subject</string>
+          <key>placeholder</key>
+          <string>New Outgoing SMS</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>smsSubjectIn</string>
+          <key>label</key>
+          <string>Incoming SMS Subject</string>
+          <key>placeholder</key>
+          <string>New Incoming SMS</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>callSubjectOut</string>
+          <key>label</key>
+          <string>Outgoing Call Subject</string>
+          <key>placeholder</key>
+          <string>New Outgoing Call</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>callSubjectIn</string>
+          <key>label</key>
+          <string>Incoming Call Subject</string>
+          <key>placeholder</key>
+          <string>New Incoming Call</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>voiceSubject</string>
+          <key>label</key>
+          <string>Voicemail Subject</string>
+          <key>placeholder</key>
+          <string>New Voicemail</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSGroupCell</string>
+          <key>isStaticText</key>
+          <true/>
+          </dict>
+          <dict>
+          <key>cell</key>
+          <string>PSTitleValueCell</string>
+          <key>label</key>
+          <string>Outgoing Email Account Settings</string>
+        </dict>
+
+        <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>fromEmail</string>
+          <key>label</key>
+          <string>Account Email</string>
+          <key>placeholder</key>
+          <string></string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSSecureEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>pw</string>
+          <key>label</key>
+          <string>Password</string>
+          <key>placeholder</key>
+          <string></string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>host</string>
+          <key>label</key>
+          <string>Host</string>
+          <key>placeholder</key>
+          <string>smtps://</string>
+         </dict>
+         <dict>
+          <key>cell</key>
+          <string>PSEditTextCell</string>
+          <key>detail</key>
+          <string>PSDetailController</string>
+          <key>defaults</key>
+          <string>com.iforward</string>
+          <key>key</key>
+          <string>port</string>
+          <key>label</key>
+          <string>Port</string>
+          <key>placeholder</key>
+          <string></string>
+         </dict>
+      </array>
+      <key>title</key>
+      <string>iForward</string>
+   </dict>
+</plist>

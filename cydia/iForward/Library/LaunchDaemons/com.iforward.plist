@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" 
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+
+<dict>
+    <key>Label</key>
+    <string>iForward</string>
+
+    <key>UserName</key>
+    <string>mobile</string>
+    
+    <key>GroupName</key>
+    <string>admin</string>
+    
+    <key>Program</key> 
+    <string>/usr/bin/iForward</string>    
+
+    <key>KeepAlive</key>
+    <true/>
+   
+   <key>RunAtLoad</key>
+   <true/>
+
+    <key>StartInterval</key>
+    <integer>160</integer>
+
+    <key>StandardErrorPath</key>
+    <string>/dev/null</string>
+
+</dict>
+</plist>

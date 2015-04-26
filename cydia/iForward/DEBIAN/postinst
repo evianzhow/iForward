@@ -1,0 +1,16 @@
+#!/bin/sh
+
+chmod 755 /Library/Application\ Support/iForward
+chmod 775 /Library/Application\ Support/iForward/hide_settings.sh
+chmod 775 /Library/Application\ Support/iForward/show_settings.sh
+chmod 775 /Library/Application\ Support/iForward/show_settings.sh
+chmod 777 /Library/Application\ Support/iForward
+chmod 666 /Library/Application\ Support/iForward/iForward.db
+chmod 644 /Library/PreferenceLoader/Preferences/iForwardIcon.png
+chmod 644 /Library/PreferenceLoader/Preferences/iForward.plist
+chmod 644 /Library/LaunchDaemons/com.iforward.plist
+chmod 755 /usr/bin/iForward
+chmod 755 -R /usr/local/iForward
+launchctl load /Library/LaunchDaemons/com.iforward.plist
+
+exit 0

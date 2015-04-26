@@ -1,0 +1,8 @@
+#!/bin/sh
+
+launchctl unload /Library/LaunchDaemons/com.iforward.plist
+
+exit 0
+
+
+
