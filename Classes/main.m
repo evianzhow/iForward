@@ -11,8 +11,6 @@
 #include <time.h>
 #include <unistd.h>
 #include <sqlite3.h>
-#include <openssl/sha.h>
-#include <openssl/evp.h>
 #include <assert.h>
 #include <unistd.h>
 
