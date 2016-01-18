@@ -111,7 +111,7 @@ ifeq ($(IPHONE_IP),)
 else
 	ssh root@$(IPHONE_IP) 'dpkg -r iForward'
 	scp cydia/iForward.deb root@$(IPHONE_IP):iForward.deb
-	ssh mobile@$(IPHONE_IP) 'dpkg -i iForward'
+	ssh root@$(IPHONE_IP) 'dpkg -i iForward'
 	echo "Application installed"
 endif
 
