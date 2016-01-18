@@ -1,24 +1,35 @@
+XCODE_BASE=/Applications/Xcode.app/Contents
+#SIMULATOR_BASE=$(XCODE_BASE)/Developer/Platforms/iPhoneSimulator.platform
+SIMULATOR_BASE=$(XCODE_BASE)/Developer/Platforms/iPhoneOS.platform
+FRAMEWORKS=$(SIMULATOR_BASE)/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/
+INCLUDES=$(SIMULATOR_BASE)/Developer/SDKs/iPhoneOS6.1.sdk/usr/include
+
 IPHONE_IP:=
 PROJECTNAME:=iForward
 APPFOLDER:=$(PROJECTNAME).app
 INSTALLFOLDER:=$(PROJECTNAME).app
 
-CC:=ios-clang
-CPP:=ios-clang++
+CC:=clang
+CPP:=clang++
 
-CFLAGS += -objc-arc
-CFLAGS += -fblocks
-CFLAGS += -g0 -O2
+#CFLAGS += -objc-arc
+#CFLAGS += -fblocks
+#CFLAGS += -g0 -O2
 CFLAGS += -I"$(SRCDIR)"
 
-CPPFLAGS += -objc-arc
-CPPFLAGS += -fblocks
-CPPFLAGS += -g0 -O2
+#CPPFLAGS += -objc-arc
+#CPPFLAGS += -fblocks
+#CPPFLAGS += -g0 -O2
 CPPLAGS += -I"$(SRCDIR)"
 
-CFLAGS += -F"/usr/share/iPhoneOS6.0.sdk/System/Library/Frameworks" 
-CFLAGS += -F"/usr/share/iPhoneOS6.0.sdk/System/Library/PrivateFrameworks" 
+#CFLAGS += -F"/usr/share/iPhoneOS6.0.sdk/System/Library/Frameworks"
+CFLAGS += -F"$(SIMULATOR_BASE)/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/PrivateFrameworks/" 
 
+CFLAGS += -arch armv7s
+#CFLAGS += -arch x86_64
+#CFLAGS += -mios-simulator-version-min=6.1
+#CFLAGS += -fobjc-abi-version=2
+CFLAGS += -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk
 LDFLAGS += -framework Foundation 
 LDFLAGS += -framework UIKit 
 LDFLAGS += -framework CoreGraphics
@@ -47,7 +58,7 @@ LDFLAGS += -framework QuartzCore
 //LDFLAGS += -framework StoreKit
 //LDFLAGS += -framework System
 //LDFLAGS += -framework SystemConfiguration
-LDFLAGS += -framework CoreSurface
+//LDFLAGS += -framework CoreSurface
 LDFLAGS += -framework GraphicsServices
 //LDFLAGS += -framework Celestial
 //LDFLAGS += -framework WebCore
@@ -56,14 +67,11 @@ LDFLAGS += -framework GraphicsServices
 //LDFLAGS += -framework TelephonyUI
 //LDFLAGS += -framework JavaScriptCore
 //LDFLAGS += -framework PhotoLibrary
-LDFLAGS += -F"/usr/share/iPhoneOS6.0.sdk/System/Library/Frameworks"
-LDFLAGS += -F"/usr/share/iPhoneOS6.0.sdk/System/Library/PrivateFrameworks"
 LDFLAGS += -L"/usr/local/iForward/lib"
 LDFLAGS += -lcurl
-LDFLAGS += -L"/usr/lib" -lssl -lcrypto
-//LDFLAGS += -bind_at_load
+#LDFLAGS += -L"/usr/lib" -lssl -lcrypto
 
-SRCDIR=./Classes
+SRCDIR=Classes
 OBJS+=$(patsubst %.m,%.o,$(wildcard $(SRCDIR)/*.m))
 OBJS+=$(patsubst %.c,%.o,$(wildcard $(SRCDIR)/*.c))
 OBJS+=$(patsubst %.cpp,%.o,$(wildcard $(SRCDIR)/*.cpp))

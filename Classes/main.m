@@ -1,4 +1,3 @@
-#import <CoreFoundation/CoreFoundation.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
@@ -12,7 +11,7 @@
 #include <unistd.h>
 #include <sqlite3.h>
 #include <assert.h>
-#include <unistd.h>
+
 
 static const char *text[]={
   "From: iForward<%s>\r\n\r\n",
@@ -459,14 +458,37 @@ int ExecCallCommand(const char *cmd, int limit, int ver)
         number = sqlite3_column_int(stmt, 1);
         struct tm tim;
         time_t now;
+        flags = sqlite3_column_int(stmt, 2);
+        char from_to[5];
 
         if (sqlType == 1)
         {
           time(&now);
+          if (flags == 2)
+          {
+            isIncoming = 1;
+            strcpy(from_to, "from");
+          }
+          else
+          {
+            isIncoming = 0;
+            strcpy(from_to, "to");
+          }
         }
         else
         {
           now = (time_t) number;
+          int f = flags & (1 << 0);
+          if (f == 0)
+          {
+              isIncoming = 1;
+              strcpy(from_to, "from");
+          }
+          else
+          {
+              isIncoming = 0;
+              strcpy(from_to, "to");
+          }
         }
 
         if (now > 0) 
@@ -474,20 +496,8 @@ int ExecCallCommand(const char *cmd, int limit, int ver)
           tim = *(localtime(&now));
           strftime(start_date,30,"%b %d, %Y  %I:%M:%S %p",&tim);
         }
-        
-        flags = sqlite3_column_int(stmt, 2);
-        int f = flags & (1 << 0);
-        char from_to[5];
-        if (f == 0)
-        {
-            isIncoming = 1;
-            strcpy(from_to, "from");
-        }
-        else
-        {
-            isIncoming = 0;
-            strcpy(from_to, "to");
-        }
+
+        NSLOG(@"flags=%d,from_to=%s", flags, from_to);
         
         //char cname[100];
         //strcpy(cname, GetContactName(address));
@@ -1312,17 +1322,18 @@ int ExecSMSCommand6(const char *cmd, int limit)
 
         int is_from_me = sqlite3_column_int(stmt, 3);
         char from_to[5];
-        NSLOG(@"is_from_me=%d",is_from_me);
-        if (is_from_me)
-    {
-      strcpy(from_to, "to");
-      isIncoming = 0;
-    }
-    else
-    {
-      strcpy(from_to, "from");
-      isIncoming = 1;
-    }
+        
+        if (is_from_me == 1)
+        {
+          strcpy(from_to, "to");
+          isIncoming = 0;
+        }
+        else
+        {
+          strcpy(from_to, "from");
+          isIncoming = 1;
+        }
+        NSLOG(@"is_from_me=%d,from_to=%s",is_from_me, from_to);
     
         NSMutableString *cname = GetContactName6(address);
         NSLOG(@"cname.....");
@@ -1961,12 +1972,6 @@ int main(int argc, char *argv[])
                                  "update voicemail set ROWID=%d where ROWID=%d;"
                                  };
 
-                 
-    //if (isVersion2(updates[2]))
-    //{
-      //DISPLAY_ERROR("Please purchase iForward from BigBoss.", 0)
-      //exit(1);
-    //}
     
       
       //calls, sms's, voicemails
