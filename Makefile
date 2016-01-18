@@ -99,15 +99,8 @@ $(PROJECTNAME):	$(OBJS)
 
 
 dist:	$(PROJECTNAME)
-	mkdir -p $(APPFOLDER)
-ifneq ($(RESOURCES),)
-	cp -r $(RESOURCES) $(APPFOLDER)
-endif
-	cp $(INFOPLIST) $(APPFOLDER)/Info.plist
-	cp $(PROJECTNAME) $(APPFOLDER)
-	find $(APPFOLDER) -name \*.png|xargs ios-pngcrush -c
-	find $(APPFOLDER) -name \*.plist|xargs ios-plutil -c
-	find $(APPFOLDER) -name \*.strings|xargs ios-plutil -c
+	cp iForward cydia/iForward/usr/bin/iForward
+	dpkg-deb -b cydia/iForward
 
 langs:
 	ios-genLocalization
@@ -116,18 +109,18 @@ install: dist
 ifeq ($(IPHONE_IP),)
 	echo "Please set IPHONE_IP"
 else
-	ssh root@$(IPHONE_IP) 'rm -fr /Applications/$(INSTALLFOLDER)'
-	scp -r $(APPFOLDER) root@$(IPHONE_IP):/Applications/$(INSTALLFOLDER)
-	echo "Application $(INSTALLFOLDER) installed"
-	ssh mobile@$(IPHONE_IP) 'uicache'
+	ssh root@$(IPHONE_IP) 'dpkg -r iForward'
+	scp cydia/iForward.deb root@$(IPHONE_IP):iForward.deb
+	ssh mobile@$(IPHONE_IP) 'dpkg -i iForward'
+	echo "Application installed"
 endif
 
 uninstall:
 ifeq ($(IPHONE_IP),)
 	echo "Please set IPHONE_IP"
 else
-	ssh root@$(IPHONE_IP) 'rm -fr /Applications/$(INSTALLFOLDER)'
-	echo "Application $(INSTALLFOLDER) uninstalled"
+	ssh root@$(IPHONE_IP) 'dpkg -r iForward'
+	echo "Application uninstalled"
 endif
 clean:
 	find . -name \*.o|xargs rm -rf
